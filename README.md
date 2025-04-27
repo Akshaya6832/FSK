@@ -18,7 +18,6 @@ def butter_lowpass_filter(data, cutoff, fs, order=5):
     normal_cutoff = cutoff / nyquist
     b, a = butter(order, normal_cutoff, btype='low', analog=False)
     return lfilter(b, a, data)
-
 fs = 1000
 f1 = 30
 f2 = 70
@@ -42,7 +41,6 @@ for i, bit in enumerate(bits):
 
 ref_f1 = np.sin(2 * np.pi * f1 * t)
 ref_f2 = np.sin(2 * np.pi * f2 * t)
-
 corr_f1 = butter_lowpass_filter(fsk_signal * ref_f1, f2, fs)
 corr_f2 = butter_lowpass_filter(fsk_signal * ref_f2, f2, fs)
 
@@ -57,7 +55,6 @@ decoded_bits = np.array(decoded_bits)
 demodulated_signal = np.repeat(decoded_bits, bit_duration)
 
 plt.figure(figsize=(12, 12))
-
 plt.subplot(6, 1, 1)
 plt.plot(t, message_signal, color='b')
 plt.title('Message Signal')
@@ -85,10 +82,8 @@ plt.grid(True)
 
 plt.tight_layout()
 plt.show()
-
 ```
 # Output Waveform
-
 ![WhatsApp Image 2025-04-26 at 21 06 55_45d56153](https://github.com/user-attachments/assets/77537d18-78d1-444e-83a9-3746a950d38f)
 
 # Result
